@@ -6,10 +6,16 @@
     <meta name="author" content="Dylan Truong">
     <meta name="description" content="Personal home page for Dylan Truong, a Computer Science student at UNC Charlotte.">
 
-    <title>Dylan Truong | Personal Home Page</title>
+    <title>Dylan Truong | Home </title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap');
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -19,6 +25,24 @@
             width: 90%;
             margin: 0 auto;
             line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
@@ -26,20 +50,37 @@
             color: #3498DB;
             text-align: center;
             font-size: 2.5em;
+            opacity: 0;
+            transform: translateY(-40px) scale(0.95);
+            animation: fadeInDown 1s 0.2s forwards;
+            letter-spacing: 2px;
         }
 
         h2 {
             font-family: 'Montserrat', sans-serif;
             color: #3498DB;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.7s forwards;
         }
+
+        main p {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+        main p:nth-of-type(1) { animation-delay: 1.2s; }
+        main p:nth-of-type(2) { animation-delay: 1.6s; }
 
         a {
             color: #3498DB;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         a:hover {
             text-decoration: underline;
+            color: #1abc9c;
         }
 
         footer {
@@ -48,20 +89,37 @@
             border-top: 1px solid #34495E;
             text-align: center;
             font-size: 0.9em;
+            opacity: 0;
+            animation: fadeIn 1s 2.2s forwards;
+        }
+
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
     </style>
-
-    <!--<script src="https://static.acumulus.com/acumulus-validator-2.0.min.js" async></script>-->
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    <canvas id="bg-canvas"></canvas>
     <header>
         <h1>Dylan Truong</h1>
     </header>
-
     <main>
-        <h2>Personal Home Page</h2>
+        <h2>Welcome!</h2>
         <p>
             Hello! I'm Dylan Truong, a senior Computer Science major at the <strong>University of North Carolina at Charlotte</strong>. My concentration is in <strong>Human-Machine Interaction (HMI)</strong>, where I focus on designing and developing technology that is not only powerful but also intuitive, accessible, and enjoyable for people to use. I'm passionate about bridging the gap between complex systems and the end-user.
         </p>
@@ -69,7 +127,6 @@
             Throughout my academic career, I've gained experience with various programming languages and web technologies. My coursework in HMI has sharpened my skills in user-centered design, prototyping, and usability testing. I am always looking for opportunities to apply my technical knowledge to create meaningful and impactful user experiences.
         </p>
     </main>
-
     <footer>
         <nav>
             <a href="https://github.com/dylatrong" target="_blank">GitHub.com</a> |
@@ -78,7 +135,97 @@
             <a href="http://webpages.charlotte.edu/dtruong9/" target="_blank">CLT Web</a> |
             <a href="itis3135">ITIS 3135</a>
         </nav>
-    </footer>
+                <p>Page built by <a href="itis3</footer>135/dylatrong.com/">DylaTrong Designs</a> &copy; 2025</p>
 
+    </footer>
+    <script>
+        // Responsive canvas size
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        // Particle system for computer-graphics effect
+        function createParticles() {
+            const count = Math.floor((width * height) / 3500);
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.7,
+                    vy: (Math.random() - 0.5) * 0.7,
+                    r: Math.random() * 1.8 + 1.2,
+                    color: `rgba(${52 + Math.random()*30},${152 + Math.random()*40},${219 + Math.random()*20},0.8)`
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            // Draw lines between close particles
+            for (let i = 0; i < particles.length; i++) {
+                let p1 = particles[i];
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx = p1.x - p2.x, dy = p1.y - p2.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 100) {
+                        ctx.strokeStyle = `rgba(52,152,219,${0.15 - dist/700})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            // Draw particles
+            for (let p of particles) {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = "#3498db";
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function updateParticles() {
+            for (let p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+            }
+        }
+
+        function animate() {
+            updateParticles();
+            drawParticles();
+            requestAnimationFrame(animate);
+        }
+
+        function init() {
+            resizeCanvas();
+            createParticles();
+            animate();
+        }
+
+        window.addEventListener('load', init);
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+        });
+    </script>
 </body>
 </html>
