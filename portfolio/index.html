@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dylan Truong Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2b2b2b;
+      color: white;
+      text-align: center;
+    }
+
+    /* Header */
+    #header {
+      padding-top: 20px;
+      position: relative;
+    }
+
+    #header img {
+      display: block;
+      margin: 0 auto;
+      max-width: 400px;
+      position: relative;
+    }
+
+    /* Neon bars above and below */
+    #header::before,
+    #header::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 60%;
+      margin: 15px auto;
+      background: linear-gradient(to right, #ff4dc4, #00c8ff);
+      box-shadow: 0 0 8px #00c8ff, 0 0 12px #ff4dc4;
+    }
+
+    /* Navigation */
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #ff4dc4;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: cyan;
+    }
+
+    /* Main Section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px auto;
+      max-width: 800px;
+      background: url("images/neon.jpg") no-repeat center center;
+      background-size: cover;
+      box-shadow: 0 0 20px black;
+      padding: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+      text-align: left;
+      padding: 20px;
+    }
+
+    /* Typing effect */
+    .hero-text h1 {
+      font-size: 36px;
+      color: #00c8ff;
+      margin-bottom: 10px;
+      display: inline-block;
+      border-right: 3px solid #00c8ff; /* cursor */
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0; /* start hidden */
+      animation: typing 3s steps(20, end) forwards, blink 0.8s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 18ch; } /* "Hello, I am Dylan" has 18 characters incl. spaces */
+    }
+
+    @keyframes blink {
+      0% { border-color: #00c8ff; }
+      50% { border-color: transparent; }
+      100% { border-color: #00c8ff; }
+    }
+
+    .hero-text h2 {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-left: 3px solid cyan;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .hero img {
+      flex: 1;
+      max-width: 250px;
+      border: 3px solid cyan;
+      box-shadow: 0 0 15px #00c8ff;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <img src="images/name.png" alt="Dylan Truong Logo">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Me</a>
+      <a href="#">Projects</a>
+      <a href="#">Resume</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hello, I am Dylan</h1>
+      <h2>An Aspiring Researcher and UX/UI Designer</h2>
+      <p>
+        Welcome to my Portfolio Showcase! Here are my various personal and professional projects 
+        that have built up my skills in Hardware, Software, Research and Design.
+      </p>
+    </div>
+    <img src="images/headshot.jpg" alt="Dylan Headshot">
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 by Dylan Truong.
+  </footer>
+</body>
+</html>
