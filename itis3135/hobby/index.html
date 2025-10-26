@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDM 3D Printing: Passionate Creations</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <!-- Load Inter font for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        /* === Embedded Stylesheet Section (White/Minimalist Theme) === */
+        
+        /* 1. Basic Reset & Font (CRAP: Repetition, No Times New Roman) */
+        body {
+            font-family: 'Inter', sans-serif; /* Clean, modern sans-serif */
+            background-color: #f5f5f5; /* Off-White Background */
+            color: #333; /* Dark Gray Text */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 2. Header & Navigation Styling (CRAP: Contrast, Alignment) */
+        header {
+            background-color: white; /* Clean White Header */
+            color: #333;
+            padding: 1.5em 0;
+            text-align: center;
+            /* Subtle shadow for depth */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.7em;
+            color: #1a1a1a; /* Very dark text */
+            font-weight: 700;
+            font-family: 'Russo One', sans-serif; /* Distinctive display font */
+        }
+
+        nav a {
+            color: #666; /* Muted link color */
+            text-decoration: none;
+            margin: 0 0.8em;
+            padding: 0.6em 1.2em;
+            border: 1px solid transparent; 
+            border-radius: 4px; /* Soft rounding */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            font-weight: 500;
+            text-transform: none; /* Removed uppercase */
+        }
+
+        nav a:hover, nav a:focus {
+            background-color: #e9ecef; /* Light gray hover */
+            color: #007bff; /* Primary Blue highlight */
+            border-color: #007bff;
+        }
+
+        /* Unique Divider Symbol */
+        .divider {
+            color: #ccc; /* Light gray accent */
+            font-size: 1rem;
+            margin: 0 5px;
+        }
+
+        .divider[aria-hidden="true"]::before {
+            content: "•"; /* Subtle bullet divider */
+        }
+
+        /* 3. Section Styling (Display Control for Single-Page App) */
+        main {
+            flex-grow: 1;
+            padding-bottom: 50px;
+        }
+
+        section {
+            padding: 30px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: white; 
+            border-radius: 8px; /* Soft rounding on panels */
+            /* Clean shadow replaces hard border */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+            display: none; 
+        }
+        
+        h2 {
+            color: #007bff; /* Primary Blue Accent */
+            border-bottom: 1px solid #dee2e6; /* Thin, light divider */
+            padding-bottom: 0.8em;
+            margin-top: 0;
+            font-weight: 700;
+            text-transform: none; /* Removed uppercase */
+        }
+
+        /* 4. Default Visible Section */
+        #what { 
+            display: block; 
+        }
+        
+        /* 5. Custom Link Styling (No Generic Blue Underlined Links) */
+        a {
+            color: #007bff; /* Primary Blue for links */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #0056b3; 
+            text-decoration: underline;
+        }
+
+        /* 6. Figure Styling (CRAP: Alignment & Proximity) */
+        figure {
+            margin: 2em 0;
+            padding: 15px;
+            border: 1px solid #e9ecef; /* Very light border */
+            background-color: #fff; 
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        figure img {
+            width: 100%; /* Make image fill the figure's width */
+            aspect-ratio: 4 / 3; /* Enforce a 4:3 ratio */
+            object-fit: cover; /* Crop image to fit without stretching */
+            border: 1px solid #ddd; 
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        figcaption {
+            font-weight: 600;
+            margin-top: 10px;
+            color: #007bff; /* Blue for emphasis */
+            font-size: 1em;
+        }
+        
+        /* Italicized AI prompt note */
+        figure p i {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        /* Table Styling (CRAP: Alignment) */
+        table {
+            width: 100%;
+            box-sizing: border-box; /* Add this line */
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            text-align: left;
+            border: 1px solid #e9ecef; 
+        }
+        th, td {
+            border: 1px solid #e9ecef; 
+            padding: 12px;
+        }
+        th {
+            background-color: #f8f9fa; /* Light gray header */
+            color: #333; 
+            font-weight: 600;
+            text-transform: none; 
+        }
+        tr:nth-child(even) {
+            background-color: #fff; 
+        }
+        tr:nth-child(odd) {
+            background-color: #fcfcfc;
+        }
+
+        /* 7. Footer Styling (CRAP: Repetition) */
+        footer {
+            text-align: center;
+            padding: 1.5em 0;
+            background-color: #fff;
+            color: #666;
+            font-size: 0.85em;
+            margin-top: auto;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        footer a {
+            color: #007bff;
+            margin: 0 10px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5em 1em;
+                border: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .divider {
+                display: none;
+            }
+            section {
+                padding: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>3D Printing: A World of Possibilities</h1>
+        <nav>
+            <a href="#what" onclick="showSection('what')">What</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#who" onclick="showSection('who')">Who</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#when" onclick="showSection('when')">When</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#where" onclick="showSection('where')">Where</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#how" onclick="showSection('how')">How</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#why" onclick="showSection('why')">Why</a> <span class="divider" aria-hidden="true"></span>
+            <a href="#ai-prompts" onclick="showSection('ai-prompts')">AI Prompts</a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- ============================================== -->
+        <!-- WHAT (Home Page - Default Visible) -->
+        <!-- ============================================== -->
+        <section id="what">
+            <h2>What is Fused Deposition Modeling (FDM)?</h2>
+            
+            <p>
+                Fused Deposition Modeling, or FDM (sometimes called FFF for Fused Filament Fabrication), is the most common and accessible form of additive manufacturing used by hobbyists today. It works by heating a thermoplastic filament (like PLA or PETG) in a hotend and extruding it through a tiny nozzle. This molten plastic is then deposited layer by layer onto a build platform according to a digital model's specifications. 
+            </p>
+
+            <figure>
+                <img src="images/ender3pro.jpg" alt="Ender 3 Pro 3D Printer in action">
+                <figcaption>My trusty Ender 3 Pro, the workhorse of my 3D printing journey.</figcaption>
+
+            </figure>
+
+            <p>
+                The process requires meticulous preparation, including proper bed leveling and temperature calibration, but the ability to create complex, functional, and decorative objects at home is a rewarding trade-off for the initial complexity.
+            </p>
+
+            <h3>Comparing Common FDM Filaments</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filament</th>
+                        <th>Ease of Use</th>
+                        <th>Strength</th>
+                        <th>Typical Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PLA (Polylactic Acid)</td>
+                        <td>Very High</td>
+                        <td>Moderate</td>
+                        <td>Figurines, prototypes, decorative items.</td>
+                    </tr>
+                    <tr>
+                        <td>PETG (Polyethylene Terephthalate Glycol)</td>
+                        <td>Moderate</td>
+                        <td>High</td>
+                        <td>Functional parts, strong casings, outdoor items.</td>
+                    </tr>
+                    <tr>
+                        <td>TPU (Thermoplastic Polyurethane)</td>
+                        <td>Low</td>
+                        <td>Very High (Flexible)</td>
+                        <td>Phone cases, gaskets, rubber-like parts.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- WHO (About Me) -->
+        <!-- ============================================== -->
+        <section id="who">
+            <h2>Who is Dylan Truong? A Maker's Journey</h2>
+            
+            <p>
+                Hello, I'm Dylan Truong, and I began my 3D printing journey in 2022 with my reliable Ender 3 Pro. Buying my first print, I didn't fully understand the absolute wormwhole I was stepping into. What started as a curiosity quickly blossomed into a full-blown passion for creating tangible objects from digital designs. Originally, I wanted to 3D print to make life-sized video game armors, but as I delved deeper into the hobby, I discovered the vast potential of FDM printing beyond just cosplay.
+            </p>
+
+            <figure>
+                <img src="images/skull.jpg" alt="Skull Dice Tower for D&D">
+                <figcaption>My favorite print so far: A Skull Dice Tower for D&D</figcaption>
+            </figure>
+            
+            <p>
+                While the skull model above was not designed by me and might not be the most functional, it represents a significant milestone in my printing journey. It was one of the first complex models I successfully printed, requiring careful calibration and patience. The satisfaction of seeing the final product, knowing I had overcome the challenges of warping and layer adhesion, was immense.
+            </p>
+
+            <h3>My Current Focus and Future Aspirations</h3>
+            <ul>
+                <li><strong>Better Support Structure:</strong> A problem I constantly run into with my printer is that, with more complex support material, the higher chance of failure the print has.</li>
+                <li><strong>Higher Detail:</strong> I want to experiment with different slicer settings and nozzle sizes to achieve finer details in my prints.</li>
+                <li><strong>Multi-Material Printing:</strong> I plan to upgrade my setup to handle multi-color or multi-material prints to increase the aesthetic and functional complexity of my creations.</li>
+            </ul>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- WHEN (Best Times / Schedule) -->
+        <!-- ============================================== -->
+        <section id="when">
+            <h2>Timing is Everything: When to Print</h2>
+            
+            <p>
+                3D printing is often a game of patience. Small components might finish in under an hour, but large, high-resolution models can easily stretch into 24, 48, or even 72 hours. Understanding this print duration is crucial for scheduling. Stopping a print mid-way is usually catastrophic, so it’s essential to begin long jobs when you know the printer can run uninterrupted.
+            </p>
+
+            <figure>
+                <img src="images/coaster.jpg" alt="Overnight print of coasters">
+                <figcaption>While the coasters were a simple print, they served as a great test of my overnight print settings.</figcaption>
+            </figure>
+            
+            <p>
+                The ability to run a long print for hours while you are away requires the use of a few tools. First, I always ensure my printer's UPS is reliable and is fully charged. I also use OctoPrint, a web interface that allows me to monitor and control my printer remotely. This way, I can check on the print's progress, adjust settings if necessary, and even stop the print if something goes wrong.
+            </p>
+
+            <h3>My Ideal Printing Schedule</h3>
+            <ol>
+                <li><strong>Overnight (10 PM – 7 AM):</strong> Reserved exclusively for long, complex prints. The house is quiet, temperatures are stable, and no one needs the workspace.</li>
+                <li><strong>Weekend Mornings (8 AM – 12 PM):</strong> Used for setup, calibration (bed leveling, PID tuning), and running medium-sized, experimental prints.</li>
+                <li><strong>Weeknight Evenings (7 PM – 9 PM):</strong> Dedicated to post-processing, sanding, painting, and starting short, functional prints.</li>
+            </ol>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- WHERE (Best Locations / Places) -->
+        <!-- ============================================== -->
+        <section id="where">
+            <h2>The Printing Environment: Where is the Ideal Setup?</h2>
+            
+            <p>
+                The physical location of your FDM printer is a major factor in print quality. The ideal environment must be stable, level, and free from drafts. Sudden temperature changes caused by open windows or air conditioning vents can lead to warping (where the corners of the print lift off the bed) or layer adhesion issues. For materials like ABS, a dedicated enclosure is practically mandatory.
+            </p>
+
+            <figure>
+                <img src="images/enclosure.jpg" alt="Dedicated 3D Printing Station">
+                <figcaption>My dedicated printing station: The Mag-I.</figcaption>
+            </figure>
+            
+            <p>
+                Beyond the immediate printer environment, the "where" also refers to the digital spaces we use. These online repositories are where the community shares knowledge and, more importantly, files.
+            </p>
+
+            <h3>Essential Online Printing Resources</h3>
+            <ul>
+                <li><strong>Thingiverse:</strong> One of the oldest and largest repositories for free, user-uploaded 3D models.</li>
+                <li><strong>Printables:</strong> A newer platform known for its active community, quality-checked models, and ongoing contests.</li>
+                <li><strong>Local Maker Spaces/Clubs:</strong> Physical locations that often provide larger, more advanced printing resources and a community for troubleshooting and collaboration.</li>
+            </ul>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- HOW -->
+        <!-- ============================================== -->
+        <section id="how">
+            <h2>The FDM Workflow: From Model to Object</h2>
+            
+            <p>
+                The entire FDM process can be broken down into three main stages: Modeling, Slicing, and Printing/Post-Processing. This workflow translates a conceptual idea into physical reality.
+            </p>
+
+            <h3>Step 1: Modeling and Design</h3>
+            <p>
+                The first step is obtaining a 3D model, either by designing it yourself using Computer-Aided Design (CAD) software (like Fusion or OnShape) or downloading a pre-made file (usually in STL or OBJ format) from a repository. The model must be "manifold," meaning it is a complete, enclosed solid without holes in its mesh, ready for the next stage.
+            </p>
+
+            <h3>Step 2: Slicing (G-Code Generation)</h3>
+            <p>
+                The slicer software (like Cura, PrusaSlicer, or Simplify3D) takes the 3D model and divides it into hundreds or thousands of horizontal layers. It then translates these layers into G-code—the precise machine instructions that tell the printer where to move, how fast to extrude, and what temperature to use. This is where crucial settings like infill density, supports, and layer height are determined.
+            </p>
+
+            <figure>
+                <img src="images/slicer.jpg" alt="Slicer Software Interface, with mask from Printables">
+                <figcaption>The Slicer interface: translating a 3D model into printer instructions.</figcaption>
+            </figure>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- WHY -->
+        <!-- ============================================== -->
+        <section id="why">
+            <h2>The Maker Mindset: Why We 3D Print</h2>
+            
+            <p>
+                For many, 3D printing is more than a hobby—it's a philosophy of problem-solving and self-reliance. The primary motivation is the ability to create <strong>functional prints</strong>. Instead of throwing away a small appliance because of a single broken plastic component, we can design and print a replacement part that is often stronger than the original, saving money and reducing waste. This level of customization and utility is unmatched by off-the-shelf solutions.
+            </p>
+
+            <p>
+                Equally compelling is the <strong>creative and artistic outlet</strong> FDM printing provides. It allows artists to bring complex digital sculptures into the physical world, creating detailed figurines, custom jewelry molds, or unique decorative items that can be painted and finished. It is a powerful tool for visual prototyping and personal expression.
+            </p>
+
+            <figure>
+                <img src="images/printexamples.jpg" alt="Various 3D Printed Creations">
+                <figcaption>The endless possibilities of creation: Prototype, Repair, Art.</figcaption>
+            </figure>
+            
+            <h3>The Joy of Iteration</h3>
+            <p>
+                Perhaps the greatest reward is the learning curve itself. Each print teaches you something new about material science, machine mechanics, and digital design. The satisfaction of a perfectly calibrated, complex print coming off the bed is why we keep coming back to the spool rack.
+            </p>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- AI PROMPTS -->
+        <!-- ============================================== -->
+        <section id="ai-prompts">
+            <h2>AI Assistance: Prompts Used for Visual Assets</h2>
+            
+            <p>
+                For this site, AI was utilized to the basic skeleton layout of how the page looks and navigates. Below are the prompts used to engineer this page to life.
+
+            <h3>Page Generation Prompts (Gemini Pro)</h3>
+            <ul>
+                <li>"Hello, my name is Dylan Truong and I am very passionate about FDM 3D Printing. I have been printing since 2022 with my ender 3 pro. Can you create the skeleton of a site that follows the guidelines of the following assignment?"</li>
+                <li>"Can you convert these code snippets into a singular html file?"</li>
+                <li>"Can you give the site a more NASA/cassette futurism aesthetic?"</li> 
+                <li>"I was thinking more white, minimalist."</li>
+            </ul>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Page built by <a href="https://dylatrong.com/personal-portfolio/">DylaTrong Designs</a> &copy; 2025</p>
+        <p>
+    <a href="https://validator.w3.org/check?uri=referer" target="_blank">
+        <img style="border:0;width:88px;height:31px" src="https://upload.wikimedia.org/wikipedia/commons/b/bb/W3C_HTML5_certified.png" alt="Valid HTML!">
+    </a>
+    <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank">
+        <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!">
+    </a>
+</p>
+    </footer>
+
+    <script>
+        /**
+         * Function to hide all sections and display only the requested one.
+         * This creates the single-page application (SPA) effect.
+         */
+        function showSection(sectionId) {
+            // 1. Get all sections
+            const sections = document.querySelectorAll('section');
+            
+            // 2. Hide all sections
+            sections.forEach((section) => {
+                section.style.display = 'none';
+            });
+            
+            // 3. Show the requested section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                // Optional: Scroll to the top of the content area
+                window.scrollTo(0, 0); 
+            }
+        }
+        
+        // Initial setup: Check if a section is specified in the URL hash and show it, 
+        // otherwise default to 'what'.
+        window.onload = function() {
+            const hash = window.location.hash.substring(1); // Get hash without '#'
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            } else {
+                // Ensure 'what' is visible by default (CSS handles initial state, but this is a good JS safeguard)
+                showSection('what');
+            }
+        };
+
+        // Update section on hash change (e.g., if user uses browser back/forward buttons)
+        window.onhashchange = function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        };
+    </script>
+</body>
+</html>
