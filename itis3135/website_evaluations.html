@@ -6,28 +6,57 @@
     <title>Dylan Truong's Dynamic Turtle | Evaluation Page</title>
     <link rel="stylesheet" href="styles/default.css">
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
+    
     <div data-include="components/header.html"></div>
+    
     <main>
-        <h2>Website Evaluation</h2>
-        <p> We’re no strangers to love,
-You know the rules and so do I.
-A full commitment’s what I’m thinking of,
-You wouldnt get this from any other guy.
+        <h2>Website Evaluations</h2>
 
-I just wanna tell you how I’m feeling,
-Gotta make you understand…
+        <section>
+            <h3><a href="http://arngren.net/" target="_blank">Arngren.net</a></h3>
+            
+            <p>
+                Arngren is a Norwegian gadget retailer website that is infamous in the web design community. 
+                It functions as a digital catalog but lacks almost all modern structural elements, looking more like a collage than a store.
+            </p>
+            
+            <ul>
+                <li><strong>Contrast:</strong> The site fails significantly here; blue text links are placed over busy, multi-colored images, making them nearly impossible to read.</li>
+                <li><strong>Repetition:</strong> There is no consistent font hierarchy or color palette. Every element competes for attention with different sizes and colors.</li>
+                <li><strong>Alignment:</strong> The layout ignores grid systems entirely. Images and text blocks are scattered randomly rather than aligned to a common edge.</li>
+                <li><strong>Proximity:</strong> There is zero whitespace or grouping. Toys, car parts, and electronics are mashed together, making it difficult to tell which price tag belongs to which item.</li>
+            </ul>
+            
+            <p>
+                <strong>Assessment:</strong> This site is a textbook example of poor design because it ignores alignment and proximity, resulting in a cognitive overload for the user.
+            </p>
+        </section>
 
-Never gonna give you up,
-Never gonna let you down,
-Never gonna run around and desert you.
-Never gonna make you cry,
-Never gonna say goodbye,
-Never gonna tell a lie and hurt you.</p>
+        <section>
+            <h3><a href="https://stripe.com/" target="_blank">Stripe</a></h3>
+            
+            <p>
+                Stripe is a financial infrastructure platform known for setting high standards in modern web UI/UX, focusing on developer experience and clarity.
+            </p>
+            
+            <ul>
+                <li><strong>Contrast:</strong> The site uses sharp contrast between the dark text and clean white background (or dark mode equivalents), as well as vibrant accent colors for call-to-action buttons.</li>
+                <li><strong>Repetition:</strong> They utilize a consistent "glassmorphism" blur effect, specific font weights, and a unified color palette across all sections.</li>
+                <li><strong>Alignment:</strong> Every element, from the navigation bar to the feature lists, snaps to a strict grid, guiding the user's eye naturally down the page.</li>
+                <li><strong>Proximity:</strong> Generous padding and margins separate different product features, while related headlines and subtext are grouped tightly together.</li>
+            </ul>
+            
+            <p>
+                <strong>Assessment:</strong> Stripe effectively uses proximity and alignment to create a layout that feels organized, professional, and easy to navigate.
+            </p>
+        </section>
+
     </main>
-<div data-include="components/footer.html"></div>
+
+    <div data-include="components/footer.html"></div>
+    
     <script src="scripts/script.js"></script>
     <script src="scripts/HTMLInclude.js"></script>
 </body>

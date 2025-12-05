@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview - 3communiTEA</title>
+    
+    <style>
+        :root {
+            --primary-color: #00703C; /* UNCC Green */
+            --secondary-color: #B9975B; /* UNCC Gold */
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --content-bg: #ffffff;
+            --border-color: #ddd;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Simulating the site-wide header */
+        .site-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .site-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        /* Simulating the site-wide nav */
+        .site-nav {
+            background-color: #333;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .site-nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .site-nav li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        .site-nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .site-nav a:hover, .site-nav a.active {
+            background-color: var(--secondary-color);
+            color: #333;
+        }
+
+        /* Main content area for the assignment page */
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--content-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Page-specific title */
+        main h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Section headings */
+        main h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 2.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        /* Sub-section headings */
+        main h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Styling for figures (wireframe/sitemap) */
+        figure {
+            margin: 1.5rem 0;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        figcaption {
+            margin-top: 0.75rem;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Table for dynamic functionality */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        
+        /* Page design section list */
+        .page-design-section {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            background: #fdfdfd;
+            border-radius: 0 4px 4px 0;
+        }
+        .page-design-section ul {
+            list-style-type: circle;
+        }
+        
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* Simulating the site-wide footer */
+        .site-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .site-footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Dylan Truong's ITCS 4160 Site</h1>
+    </header>
+    
+    <nav class="site-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Assignments</a></li>
+            <li><a href="#">Hobby</a></li>
+            <li><a href="project_overview.html" class="active">Project Overview</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Client Project: Requirements & Design Proposal</h2>
+
+        <h3>1. Project Overview</h3>
+        
+        <h4>Project Name:</h4>
+        <p>3communiTEA at UNCC</p>
+
+        <h4>Application Description & Purpose:</h4>
+        <p>
+            The "3communiTEA at UNCC" website will serve as the central digital hub for the UNC Charlotte tea club. Its primary purpose is to enhance the club's visibility, streamline communication, and foster a stronger community. The application will provide essential information to both prospective and current members, including event schedules, club mission, and membership details. It aims to improve recruitment by offering a clear and engaging entry point for interested students and to keep current members informed about activities.
+        </p>
+        
+        <h4>Intended Users:</h4>
+        <ul>
+            <li><strong>Prospective Members:</strong> Current UNCC students interested in joining a new organization.</li>
+            <li><strong>Current Members:</strong> Existing club members looking for event information, updates, and resources.</li>
+            <li><strong>Club Officers (E-board):</strong> Users who will manage and provide the content (though they will not be ableto update it directly via the site).</li>
+            <li><strong>General UNCC Community:</strong> Faculty, staff, or other student groups looking to collaborate.</li>
+        </ul>
+        
+        <h4>Content Overview:</h4>
+        <ul>
+            <li><strong>About Us:</strong> Information on the club's mission, values, and the current e-board members.</li>
+            <li><strong>Events:</strong> An interactive calendar and list of upcoming meetings, special events, and collaborations.</li>
+            <li><strong>Gallery:</strong> Photos and videos from past club activities and events.</li>
+            <li><strong>Join Us / Contact:</strong> A simple, clear form for interested students to get on the mailing list and details on how to officially join, alongside social media links.</li>
+        </ul>
+
+        <h3>2. Client Information</h3>
+        <ul>
+            <li><strong>Client Name(s):</strong> [Private - Club President/Officer Name]</li>
+            <li><strong>Organization:</strong> 3communiTEA at UNCC</li>
+            <li><strong>Client's Email:</strong> [Private - uncc.tea.club@gmail.com (example)]</li>
+            <li><strong>Client's Phone:</strong> [Private]</li>
+        </ul>
+
+        <h3>3. Wireframe (Homepage)</h3>
+        <figure>
+            <img src="https://placehold.co/800x600/eee/ccc?text=Homepage+Wireframe+(draw.io)" alt="Homepage Wireframe">
+            <figcaption>
+                Figure 1: A low-fidelity wireframe for the homepage layout, created in draw.io. It outlines the placement of the navigation, hero image, welcome text, upcoming events, and footer.
+            </figcaption>
+        </figure>
+        <p><strong>Link to diagram:</strong> <a href="https[...]" target="_blank">[Private - Link to draw.io Homepage Wireframe]</a></p>
+
+        <h3>4. Site Map</h3>
+        <figure>
+            <img src="https://placehold.co/800x350/eee/ccc?text=Site+Map+(draw.io)" alt="Site Map">
+            <figcaption>
+                Figure 2: Site map illustrating the 5-page structure and primary navigation flow. All pages are accessible from the main navigation bar.
+            </figcaption>
+        </figure>
+        <p><strong>Link to diagram:</strong> <a href="https[...]" target="_blank">[Private - Link to draw.io Site Map]</a></p>
+
+        <h3>5. Page Design</h3>
+
+        <div class="page-design-section">
+            <h4>Page 1: Home (index.html)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> To welcome users, provide a brief overview of the club, and direct them to key areas (events, joining).</li>
+                <li><strong>Audience:</strong> All users (Prospective, Current, General).</li>
+                <li><strong>Content:</strong> Hero image, a short "Welcome to 3communiTEA" blurb, a call-to-action button to "Join Us," and a small preview of the next upcoming event.</li>
+                <li><strong>Data Entry:</strong> None.</li>
+                <li><strong>Validations:</strong> N/A.</li>
+                <li><strong>Buttons/Links:</strong> Main navigation bar, "Join Us" button (links to <code>join.html</code>), "See More Events" link (links to <code>events.html</code>).</li>
+                <li><strong>Actions:</strong> Navigation to other pages.</li>
+                <li><strong>Notes:</strong> This page must be visually engaging to capture interest immediately.</li>
+            </ul>
+        </div>
+        
+        <div class="page-design-section">
+            <h4>Page 2: About Us (about.html)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> To detail the club's mission, history, and introduce the leadership team.</li>
+                <li><strong>Audience:</strong> Prospective members, general UNCC community.</li>
+                <li><strong>Content:</strong> "Our Mission" section, and "Meet the E-Board" section with photos and brief bios for each officer.</li>
+                <li><strong>Data Entry:</strong> None.</li>
+                <li><strong>Validations:</strong> N/A.</li>
+                <li><strong>Buttons/Links:</strong> Main navigation. May include social media icons.</li>
+                <li><strong>Actions:</strong> None, information-only.</li>
+                <li><strong>Notes:</strong> Bios and photos will be provided by the client.</li>
+            </ul>
+        </div>
+
+        <div class="page-design-section">
+            <h4>Page 3: Events (events.html)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> To inform all users about upcoming and past club meetings and special events.</li>
+                <li><strong>Audience:</strong> All users, especially current members.</li>
+                <li><strong>Content:</strong> A jQuery-UI Calendar widget and a chronological list of events. Each event will have a title, date, time, location, and short description.</li>
+                <li><strong>Data Entry:</strong> None (on the front-end).</li>
+                <li><strong>Validations:</strong> N/A.</li>
+                <li><strong>Buttons/Links:</strong> The calendar dates will be interactive.</li>
+                <li><strong>Actions:</strong> Clicking a date on the calendar will use AJAX to fetch event details from a local <code>events.json</code> file and display them on the page without a full reload.</li>
+                <li><strong>Notes:</strong> This is a key page for member engagement. The JSON file will act as our read-only database.</li>
+            </ul>
+        </div>
+        
+        <div class="page-design-section">
+            <h4>Page 4: Gallery (gallery.html)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> To showcase the club's activities and community atmosphere through photos.</li>
+                <li><strong>Audience:</strong> Prospective members, current members.</li>
+                <li><strong>Content:</strong> A grid of thumbnail images from past events.</li>
+                <li><strong>Data Entry:</strong> None.</li>
+                <li><strong>Validations:</strong> N/A.</li>
+                <li><strong>Buttons/Links:</strong> Each thumbnail will be a link.</li>
+                <li><strong>Actions:</strong> Clicking a thumbnail will open the full-size image in an interactive "lightbox" (jQuery plugin), allowing users to cycle through the gallery.</li>
+                <li><strong>Notes:</strong> This will use a third-party jQuery plugin like Lightbox2.</li>
+            </ul>
+        </div>
+        
+        <div class="page-design-section">
+            <h4>Page 5: Join Us / Contact (join.html)</h4>
+            <ul>
+                <li><strong>Purpose:</strong> To provide a clear path for new members to join and a way for anyone to contact the club.</li>
+                <li><strong>Audience:</strong> Prospective members, general UNCC community.</li>
+                <li><strong>Content:</strong> A "Membership Interest" form, links to the club's social media (e.g., Instagram, Discord), and the club's official email address.</li>
+                <li><strong>Data Entry:</strong> Yes, a form with fields for: Name, UNCC Email, and a checkbox for "Add me to the mailing list."</li>
+                <li><strong>Validations:</strong> Yes. The "Name" field will be <code>required</code>. The "UNCC Email" field will be <code>required</code> and must use <code>type="email"</code> for browser-side validation.</li>
+                <li><strong>Buttons/Links:</strong> A "Submit" button for the form. Social media icons/links.</li>
+                <li><strong>Actions:</strong> The form's "Submit" button will trigger an <code>onsubmit</code> JavaScript event that validates the inputs and then displays a simple "Thank you for your interest!" message on the page. (Note: No data will be stored per course constraints).</li>
+                <li><strong>Notes:</strong> This page is the primary "call to action" for recruitment.</li>
+            </ul>
+        </div>
+        
+        <h3>6. Dynamic Functionality</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dynamic Functionality</th>
+                    <th>Page(s)</th>
+                    <th>Purpose & Description</th>
+                    <th>Example URL(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>jQuery-UI Widget (Calendar)</strong></td>
+                    <td><code>events.html</code></td>
+                    <td>To provide a familiar, interactive calendar interface. Users can visually see which dates have events. We will use the jQuery-UI Datepicker configured as an inline calendar.</td>
+                    <td><a href="https://jqueryui.com/datepicker/#inline" target="_blank">jqueryui.com/datepicker</a></td>
+                </tr>
+                <tr>
+                    <td><strong>AJAX Functionality (Event Loading)</strong></td>
+                    <td><code>events.html</code></td>
+                    <td>When a user clicks a date on the calendar, an AJAX (Fetch API) request will be made to a local <code>events.json</code> file. JavaScript will parse this file, find the event corresponding to the selected date, and dynamically inject the event details (title, time, description) into a <code>div</code> on the page without requiring a page reload.</td>
+                    <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">MDN Fetch API Docs</a></td>
+                </tr>
+                <tr>
+                    <td><strong>jQuery Plugin (Lightbox Gallery)</strong></td>
+                    <td><code>gallery.html</code></td>
+                    <td>To provide a professional, user-friendly way to view a gallery of images. Clicking a thumbnail will overlay the full-size image, and users can navigate between images with on-screen arrows.</td>
+                    <td><a href="https://lokeshdhakar.com/projects/lightbox2/" target="_blank">lokeshdhakar.com/lightbox2</a></td>
+                </tr>
+                <tr>
+                    <td><strong>JavaScript Form Validation & Interaction</strong></td>
+                    <td><code>join.html</code></td>
+                    <td>Beyond standard HTML5 <code>required</code> attributes, JavaScript will be used on form submission to double-check the email field (e.g., ensuring it contains "@uncc.edu"). On successful validation, JS will hide the form and show a "Success!" message.</td>
+                    <td_><a href="https://www.w3schools.com/js/js_validation.asp" target="_blank">w3schools.com/js_validation</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Dylan Truong - UNC Charlotte</p>
+        <p>
+            <a href="https://validator.w3.org/check?uri=referer" target="_blank">HTML Validator</a> |
+            <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS Validator</a>
+        </p>
+    </footer>
+
+</body>
+</html>

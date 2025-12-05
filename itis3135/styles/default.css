@@ -1,4 +1,6 @@
-/* default.css for ITIS-3135 - Dark Theme */
+/* =========================================
+   Global Styles (GitHub Dark Theme)
+   ========================================= */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #0d1117; /* GitHub dark background */
@@ -8,7 +10,7 @@ body {
 }
 
 header {
-    background-color: #161b22; /* GitHub header/nav */
+    background-color: #161b22;
     color: #f0f6fc;
     padding: 1em;
     text-align: center;
@@ -21,11 +23,11 @@ header {
 nav {
     text-align: center;
     padding: 1em;
-    background-color: #21262d; /* GitHub nav */
+    background-color: #21262d;
 }
 
 nav a {
-    color: #58a6ff; /* GitHub link blue */
+    color: #58a6ff;
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.2s;
@@ -41,9 +43,10 @@ main {
 }
 
 h2 {
-    color: #58a6ff; /* GitHub blue */
+    color: #58a6ff;
 }
 
+/* Default Figure/Image Styles */
 figure {
     margin: 1em;
     text-align: center;
@@ -55,8 +58,9 @@ figcaption {
     color: #8b949e;
 }
 
+/* Default Blockquote Styles */
 blockquote {
-    border-left: 5px solid #30363d; /* Subtle border */
+    border-left: 5px solid #30363d;
     margin-left: 20px;
     padding-left: 15px;
     font-style: italic;
@@ -77,4 +81,192 @@ footer a {
 
 footer nav a {
     color: #f0f6fc;
+}
+
+/* =========================================
+   Intro Form Styling (Input View)
+   ========================================= */
+
+/* The Container - Removed 'form' prefix */
+#introForm {
+    max-width: 800px;
+    margin: 2em auto;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 2em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Labels - Removed 'form' prefix */
+#introForm label {
+    display: block;
+    margin-bottom: 1.5em;
+    font-weight: 600;
+    color: #f0f6fc;
+}
+
+/* Inputs & Textareas - Removed 'form' prefix */
+#introForm input[type="text"],
+#introForm textarea,
+#introForm select {
+    display: block;
+    width: 100%;
+    margin-top: 0.5em;
+    padding: 10px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #c9d1d9;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#introForm input:focus,
+#introForm textarea:focus {
+    border-color: #58a6ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+}
+
+#introForm textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* File Input - Removed 'form' prefix */
+#introForm input[type="file"] {
+    background-color: transparent;
+    border: none;
+    padding-left: 0;
+}
+
+/* Course Section Layout */
+fieldset {
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 1.5em;
+    margin-bottom: 2em;
+    background-color: rgba(13, 17, 23, 0.5);
+}
+
+legend {
+    color: #58a6ff;
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.course {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.course input[name="courseCategory"] { flex: 1; }
+.course input[name="courseNumber"] { flex: 1; }
+.course input[name="courseReason"] { flex: 3; }
+
+/* Buttons */
+.button-container {
+    text-align: center;
+    margin-top: 2em;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+/* Green Action Buttons */
+button[type="submit"], #jsonBtn, #htmlBtn, #addCourse {
+    background-color: #238636;
+    color: #ffffff;
+}
+
+button[type="submit"]:hover, #jsonBtn:hover, #htmlBtn:hover, #addCourse:hover {
+    background-color: #2ea043;
+}
+
+/* Grey Secondary Buttons */
+button[type="reset"], #clearBtn, .delete-btn {
+    background-color: #21262d;
+    color: #c9d1d9;
+    border-color: #30363d;
+}
+
+button[type="reset"]:hover, #clearBtn:hover, .delete-btn:hover {
+    background-color: #30363d;
+}
+
+/* =========================================
+   Result Display (Output View)
+   ========================================= */
+
+/* Ensure the result looks EXACTLY like the static page */
+#result {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent; /* No background card */
+    border: none;
+    color: inherit;
+}
+
+/* Reset image styles for the result view */
+#result img {
+    width: 200px;
+    border: none;
+    border-radius: 0;
+}
+
+/* A container for the "Back" button so it doesn't clutter the result */
+.reset-container {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid #30363d;
+    text-align: center;
+}
+
+/* =========================================
+   Assignment Specific: Link States
+   (Targeting links inside <main> to keep nav/footer distinct)
+   ========================================= */
+
+/* 1. Default State (GitHub Blue) */
+main a:link {
+    color: #58a6ff; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 2. Visited State (Muted Purple - shows you've clicked it) */
+main a:visited {
+    color: #bc8cff; 
+}
+
+/* 3. Hover State (Bright White/Blue + Underline) */
+main a:hover {
+    color: #f0f6fc; 
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 4. Active State (GitHub Gold/Orange - while clicking) */
+main a:active {
+    color: #d29922; 
+}
+
+/* Optional: Add spacing between the two evaluation sections */
+section {
+    margin-bottom: 3em;
+    border-bottom: 1px solid #30363d; /* subtle separator line */
+    padding-bottom: 2em;
 }

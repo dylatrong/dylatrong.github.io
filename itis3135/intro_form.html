@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dylan Truong's Dynamic Turtle | Introduction Form</title>
+  
+  <link rel="stylesheet" href="styles/default.css">
+  
+  <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <h2>Introduction Form</h2>
+
+    <form id="introForm">
+      <label>First Name* <input type="text" name="firstName" value="Dylan" required></label>
+      <label>Last Name* <input type="text" name="lastName" value="Truong" required></label>
+
+      <label>Picture Caption* <input type="text" name="caption" value="Dylan J. Truong, in an AirBNB, Aug 2025" required></label>
+
+      <label>Personal Statement* <textarea name="statement" required>Hello! My name is Dylan Truong and I’m a 22 year old comp sci major at UNC Charlotte. My concentration is in Human Computer Interaction, and I have a passion for design and building things. I was born and raised in Upstate New York, and moved to North Carolina in 2017. Now, I call Monroe my home (And have been for about 8 years now!)</textarea></label>
+
+      <label>Personal Background* <textarea name="personal" required>On top of what's mentioned above, I love making costumes and playing Doom.</textarea></label>
+
+      <label>Professional Background* <textarea name="professional" required>I began my career with 3 years in Industrial Maintenance at Berry Global. This included electrical engineering and various technical skills at work. From that, I moved to Math Tutoring at a public School (UCPS) as my current job.</textarea></label>
+
+      <label>Academic Background* <textarea name="academic" required>Currently in Computer Science, HCI concentration. I started in 2020 as an electrical/industrial apprentice and moved to my current degree in 2022. My highest level of education is an Associates Degree.</textarea></label>
+
+      <label>Primary Computer* <textarea name="computer" required>ASUS TUF Dash F15 2021 (3060 ver.) running Windows 11 in my bedroom.</textarea></label>
+
+      <fieldset>
+        <legend>Courses I’m Taking & Why*</legend>
+        <div id="courses">
+          <div class="course">
+            <input type="text" name="courseCategory" placeholder="Category (e.g., ITIS)">
+            <input type="text" name="courseNumber" placeholder="Number (e.g., 3135)">
+            <input type="text" name="courseReason" placeholder="Reason for taking">
+            </div>
+        </div>
+        <button type="button" id="addCourse">Add Course</button>
+      </fieldset>
+
+      <label>Funny/Interesting Item 
+        <textarea name="funny">If you google the UNC Charlotte campus police reports for Oct 30th, 2024, and search for “skateboard” you’ll see the entry where a campus officer found me after breaking my ankle skating at North Deck.</textarea>
+      </label>
+
+      <label>Something to Share 
+        <textarea name="share">Now I have a mended ankle. Don’t skate.</textarea>
+      </label>
+
+      <label>Quote* <input type="text" name="quote" value="There is no problem so severe that time cannot fix.”" required></label>
+      <label>Quote Author* <input type="text" name="quoteAuthor" value="The Orville (Show)" required></label>
+
+      <label>Profile Image* <input type="file" name="picture" accept="image/*"></label>
+
+      <div class="button-container">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" id="clearBtn">Clear</button>
+        <button type="button" id="jsonBtn">Generate JSON</button>
+        <button type="button" id="htmlBtn">Generate HTML</button>
+      </div>
+    </form>
+
+    <div id="result" style="display:none;"></div>
+  </main>
+
+  <div data-include="components/footer.html"></div>
+
+<script>
+  // === DOM Elements ===
+  const form = document.getElementById("introForm");
+  const resultDiv = document.getElementById("result");
+  const heading = document.querySelector("main h2");
+  const coursesContainer = document.getElementById("courses");
+  const addCourseBtn = document.getElementById("addCourse");
+
+  // === 1. Dynamic Course Fields Logic ===
+  addCourseBtn.addEventListener("click", () => {
+    const newCourseDiv = document.createElement("div");
+    newCourseDiv.classList.add("course");
+    newCourseDiv.innerHTML = `
+        <input type="text" name="courseCategory" placeholder="Category">
+        <input type="text" name="courseNumber" placeholder="Number">
+        <input type="text" name="courseReason" placeholder="Reason">
+        <button type="button" class="delete-btn">X</button>
+    `;
+    coursesContainer.appendChild(newCourseDiv);
+
+    // Add delete functionality to the new button
+    newCourseDiv.querySelector(".delete-btn").addEventListener("click", function() {
+        this.parentElement.remove();
+    });
+  });
+
+  // === 2. Utility: Clear Button ===
+  document.getElementById("clearBtn").addEventListener("click", () => {
+    form.querySelectorAll("input, textarea").forEach((el) => el.value = "");
+  });
+
+  // === 3. Utility: HTML Escape ===
+  function escapeHTML(str) {
+    return str.replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#039;');
+  }
+
+  // === 4. Process Courses Helper ===
+  function getProcessedCourses() {
+    const userCourses = [];
+    const courseDivs = form.querySelectorAll("#courses .course");
+
+    courseDivs.forEach((courseDiv) => {
+      const categoryInput = courseDiv.querySelector("[name='courseCategory']");
+      const numberInput = courseDiv.querySelector("[name='courseNumber']");
+      const reasonInput = courseDiv.querySelector("[name='courseReason']");
+
+      if (categoryInput && numberInput && reasonInput) {
+        const category = categoryInput.value.trim();
+        const number = numberInput.value.trim();
+        const reason = reasonInput.value.trim();
+        
+        if (category && number && reason) {
+          userCourses.push(`${category}-${number} - ${reason}`);
+        }
+      }
+    });
+    return userCourses;
+  }
+
+  // === 5. SUBMIT: VISUAL OUTPUT (Matches Static Page Exactly) ===
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    
+    // Image Handling
+    const file = data.get("picture");
+    const imgURL = file && file.name ? URL.createObjectURL(file) : "images/headshot.jpg";
+
+    // Course Handling
+    const userCourses = getProcessedCourses();
+    const defaultCourses = [
+      "ITIS-3135 - Front-End Web Application Development: Concentration Requirement.",
+      "ITIS-4180 - Mobile Application Development: Concentration Requirement.",
+      "ITIS-4358 - Physical Computing: Concentration Requirement.",
+      "ITIS-4353 - Social Technology Design: Concentration Requirement.",
+      "ITIS-3140 - User Experience Methods: Concentration Requirement."
+    ];
+    const coursesToShow = userCourses.length > 0 ? userCourses : defaultCourses;
+    const coursesHTML = coursesToShow.map((c) => `<li>${c}</li>`).join("");
+
+    // Output Generation
+    heading.textContent = "Introduction"; // Standard page title
+
+    // This HTML structure matches the static page nesting exactly
+    const html = `
+      <figure>
+        <img src="${imgURL}" alt="Headshot of ${data.get("firstName")} ${data.get("lastName")}">
+        <figcaption>${data.get("caption")}</figcaption>
+      </figure>
+
+      <p>${data.get("statement")}</p>
+
+      <ul>
+        <li><strong>Personal Background:</strong> ${data.get("personal")}</li>
+        <li><strong>Professional Background:</strong> ${data.get("professional")}</li>
+        <li><strong>Academic Background:</strong> ${data.get("academic")}</li>
+        <li><strong>Primary Computer:</strong> ${data.get("computer")}</li>
+        <li><strong>Courses I’m Taking, & Why:</strong>
+            <ul>${coursesHTML}</ul>
+        </li>
+        <li><strong>Funny/Interesting Item to Remember Me by:</strong> ${data.get("funny")}</li>
+        <li><strong>I’d Also Like to Share:</strong> ${data.get("share")}</li>
+      </ul>
+      
+      <blockquote>"${data.get("quote")}"
+        <cite>- ${data.get("quoteAuthor")}</cite>
+      </blockquote>
+
+      <div class="reset-container">
+        <button onclick="window.location.reload()">Reset to Form</button>
+      </div>
+    `;
+
+    resultDiv.innerHTML = html;
+    form.style.display = "none";
+    resultDiv.style.display = "block";
+    window.scrollTo(0, 0);
+  });
+
+  // === 6. GENERATE HTML SOURCE CODE ===
+  document.getElementById("htmlBtn").addEventListener("click", () => {
+    const data = new FormData(form);
+    const file = data.get("picture");
+    const imgURL = file && file.name ? URL.createObjectURL(file) : "images/headshot.jpg";
+    const userCourses = getProcessedCourses();
+    const defaultCourses = [
+      "ITIS-3135 - Front-End Web Application Development: Concentration Requirement.",
+      "ITIS-4180 - Mobile Application Development: Concentration Requirement.",
+      "ITIS-4358 - Physical Computing: Concentration Requirement.",
+      "ITIS-4353 - Social Technology Design: Concentration Requirement.",
+      "ITIS-3140 - User Experience Methods: Concentration Requirement."
+    ];
+    const coursesToShow = userCourses.length > 0 ? userCourses : defaultCourses;
+    const coursesHTML = coursesToShow.map((c) => `<li>${c}</li>`).join("");
+
+    const htmlToDisplay = `
+      <figure>
+        <img src="${imgURL}" alt="Headshot of ${data.get("firstName")} ${data.get("lastName")}" style="width:200px;">
+        <figcaption>${data.get("caption")}</figcaption>
+      </figure>
+
+      <p>${data.get("statement")}</p>
+      <ul>
+        <li><strong>Personal Background:</strong> ${data.get("personal")}</li>
+        <li><strong>Professional Background:</strong> ${data.get("professional")}</li>
+        <li><strong>Academic Background:</strong> ${data.get("academic")}</li>
+        <li><strong>Primary Computer:</strong> ${data.get("computer")}</li>
+        <li><strong>Courses I’m Taking, & Why:</strong>
+          <ul>${coursesHTML}</ul>
+        </li>
+        <li><strong>Funny/Interesting Item to Remember Me by:</strong> ${data.get("funny")}</li>
+        <li><strong>I’d Also Like to Share:</strong> ${data.get("share")}</li>
+      </ul>
+      <blockquote>"${data.get("quote")}"<cite>- ${data.get("quoteAuthor")}</cite></blockquote>
+    `;
+
+    heading.textContent = "Introduction HTML Source";
+    
+    const html = `
+      <pre><code class="language-html">
+${escapeHTML(htmlToDisplay)}
+      </code></pre>
+      <div class="reset-container">
+        <button onclick="window.location.reload()">Reset to Form</button>
+      </div>
+    `;
+
+    resultDiv.innerHTML = html;
+    form.style.display = "none";
+    resultDiv.style.display = "block";
+    hljs.highlightAll();
+  });
+
+  // === 7. GENERATE JSON ===
+  document.getElementById("jsonBtn").addEventListener("click", () => {
+    const data = new FormData(form);
+    
+    // Process JSON specific course objects
+    const courseDivs = form.querySelectorAll("#courses .course");
+    let coursesJSON = [];
+    
+    courseDivs.forEach((courseDiv) => {
+      const category = courseDiv.querySelector("[name='courseCategory']").value.trim();
+      const number = courseDiv.querySelector("[name='courseNumber']").value.trim();
+      const reason = courseDiv.querySelector("[name='courseReason']").value.trim();
+      
+      if (category && number && reason) {
+        coursesJSON.push({
+          department: category,
+          number: number,
+          name: "", 
+          reason: reason
+        });
+      }
+    });
+
+    if (coursesJSON.length === 0) {
+         // Default JSON if none entered
+         coursesJSON = [
+            { department: "ITIS", number: "3135", name: "Front-End Web App Dev", reason: "Concentration Requirement" },
+            { department: "ITIS", number: "4180", name: "Mobile App Dev", reason: "Concentration Requirement" }
+         ];
+    }
+
+    const jsonData = {
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      caption: data.get("caption"),
+      personalStatement: data.get("statement"),
+      courses: coursesJSON
+    };
+
+    heading.textContent = "Introduction JSON";
+    
+    const html = `
+      <pre><code class="language-json">
+${JSON.stringify(jsonData, null, 2)}
+      </code></pre>
+      <div class="reset-container">
+        <button onclick="window.location.reload()">Reset to Form</button>
+      </div>
+    `;
+
+    resultDiv.innerHTML = html;
+    form.style.display = "none";
+    resultDiv.style.display = "block";
+    hljs.highlightAll();
+  });
+</script>
+
+  <script src="scripts/script.js"></script>
+  <script src="scripts/HTMLInclude.js"></script>
+</body>
+</html>
